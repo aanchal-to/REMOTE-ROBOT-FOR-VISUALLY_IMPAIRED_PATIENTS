@@ -1,0 +1,63 @@
+from gpiozero import InputDevice,
+OutputDevice, PWMOutputDevice
+from time import sleep, time
+trig1 = OutputDevice(4)
+echo1 = InputDevice(17)
+motor1 = PWMOutputDevice(14)
+trig2 = OutputDevice(27)
+echo2 = InputDevice(22)
+motor2 = PWMOutputDevice(15)
+trig3 = OutputDevice(10)
+echo3 = InputDevice(9)
+motor3 = PWMOutputDevice(25)
+sleep(2)
+def get_pulse_time(trig,echo):
+ trig.on()
+ sleep(0.00001)
+ trig.off()
+ while echo.is_active == False:
+ pulse_start = time()
+ while echo.is_active == True:
+ pulse_end = time()
+ sleep(0.06)
+ try:
+ return pulse_end - pulse_start
+ except:
+ return 0.02
+def calculate_distance(duration):
+ speed = 343
+ distance = speed * duration / 2
+ return distance
+def calculate_vibration(distance):
+ vibration = (((distance - 0.02) * -1) / (4 -
+0.02)) + 1
+ return vibration
+while True:
+ duration1 = get_pulse_time(trig1,echo1)
+ distance1 = calculate_distance(duration1)
+ print("distance 1", distance1);
+ vibration1 = calculate_vibration(distance1)
+ if distance1 < 0.3:
+ print('Front')
+
+
+ duration2 = get_pulse_time(trig2,echo2)
+ distance2 = calculate_distance(duration2)
+ print("distance 2", distance2);
+ vibration2 = calculate_vibration(distance2)
+ if distance2 < 0.3:
+ print('Left')
+ duration3 = get_pulse_time(trig3,echo3)
+ distance3 = calculate_distance(duration3)
+ print("distance 3", distance3);
+ vibration3 = calculate_vibration(distance3)
+ if distance3 < 0.3:
+ print('Right')
+
+ print("\n")
+try:
+ motor1.value = vibration1
+ motor2.value = vibration2
+ motor3.value = vibration3
+ except:
+ Pass
