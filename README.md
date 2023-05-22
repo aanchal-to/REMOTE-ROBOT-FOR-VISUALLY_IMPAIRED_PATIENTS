@@ -1,4 +1,9 @@
 # REMOTE-ROBOT-FOR-VISUALLY_IMPAIRED_PATIENTS
-Two projects described in this report demonstrate the potential of sensor technology to improve safety, independence, and efficiency in various contexts. The hat prototype with ultrasonic and haptic sensors
-is a user-centered design approach that caters to the needs of visually impaired individuals, while the robot car prototype with ultrasonic sensors aims to transform the transportation
-and logistics industry. 
+Two projects described in this report demonstrate the potential of sensor technology to improve safety, independence, and efficiency in various contexts. The hat prototype with ultrasonic and haptic sensors is a user-centered design approach that caters to the needs of visually impaired individuals, while the robot car prototype with ultrasonic sensors aims to transform the transportation and logistics industry. 
+
+***HAT PROTOTYPE***
+The ultrasonic sensor returns data back to the pi and it calculates distance of different objects from the user and uses a set of conditions to alert the user of the obstacles in the surrounding. Data processing on the Raspberry Pi is necessary for the specified task once values have been obtained from a range of sensors. Python is used to compute, distance, and verify certain conditions as well as perform the required actuation steps to achieve this.
+When the user is too close to the device (less than 0.5 meters from the object), the earphones will play a sound spatially placing the sound in the direction of the object.
+
+***CAR PROTOTYPE***
+The system utilizes ultrasonic sensors to detect obstacles and sends signals to the robot car's microcontroller, which then controls the car's movement based on the obstacle's location and distance. The hardware components of the system include the robot car, ultrasonic sensors, and a microcontroller. The ultrasonic sensors are mounted on the front and sides of the robot car, and they emit ultrasonic waves that bounce off objects in their path. The sensors then measure the time it takes for the waves to return, which is used to calculate the distance between the sensor and the obstacle. The microcontroller receives data from the ultrasonic sensors and processes it to determine the location and distance of the obstacle. If an obstacle is detected, the microcontroller sends signals to the robot car's motors to stop, reverse, or turn in a different direction to avoid the obstacle.
